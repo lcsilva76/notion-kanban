@@ -1,3 +1,4 @@
+"use client"
 import { useState } from "react"
 
 export default function NotionKanban(){
@@ -53,3 +54,5 @@ const Column = ({title, headingColor, column, cards, setCards})=>{
     </div>
     )
 }
+
+//  https://www.youtube.com/watch?v=O5lZqqy7VQE
