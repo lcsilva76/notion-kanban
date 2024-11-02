@@ -28,34 +28,14 @@ const Board = ()=>{
     
 
     return <div className="flex h-full w-full gap-3 overflow-scroll p-12">
-        <Column
-            title="Backlog"
-            column="backlog"
-            headingColor="text-neutral-500"
-            cards={cards}
-            setCards={setCards}
-        />
-        <Column
-            title="TODO"
-            column="todo"
-            headingColor="text-yellow-500"
-            cards={cards}
-            setCards={setCards}
-        />
-        <Column
-            title="In progress"
-            column="doing"
-            headingColor="text-blue-500"
-            cards={cards}
-            setCards={setCards}
-        />
-        <Column
-            title="Complete"
-            column="done"
-            headingColor="text-emerald-200"
-            cards={cards}
-            setCards={setCards}
-        />
+        <Column title="Backlog" column="backlog" headingColor="text-neutral-500" cards={cards} setCards={setCards} />
+
+        <Column title="TODO" column="todo" headingColor="text-yellow-500" cards={cards} setCards={setCards} />
+
+        <Column title="In progress" column="doing" headingColor="text-blue-500" cards={cards} setCards={setCards} />
+
+        <Column title="Complete" column="done" headingColor="text-emerald-200" cards={cards} setCards={setCards} />
+
         <BurnBarrel setCards={setCards}/>
     </div>
 }
@@ -162,13 +142,12 @@ const Column = ({title, headingColor, column, cards, setCards})=>{
     <div className="w-56 shrink-0">
         <div className="mb-3 flex items-center justify-between">
             <h3 className={`font-medium ${headingColor}`}>{title}</h3>
-            <span className="rounded text-sm text-neutral-400"> {cards.lenght}</span>
         </div>
         <div
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDragEnd}
-            className={`h-full w-full transition-colors ${!active ? "bg-neutral-800/50" : "bg-neutral-800/0"}`}>
+            className={`${filteredCards == 0 ? "pt-4": ""}  h-full w-full transition-colors ${!active ? "bg-neutral-800/50" : "bg-neutral-800/0"}`}>
                 {filteredCards.map((c)=> (<Card key={c.id} {...c}
                 handleDragStart={handleDragStart}/>))}
                 <DropIndicator beforeId='-1' column={column}/>
